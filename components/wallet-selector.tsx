@@ -1,50 +1,49 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { wallets } from "@/constants";
+import { ChevronDown, Search } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 interface WalletSelectorProps {
-  value: string
-  onChange: (value: string) => void
+  value: string;
+  onChange: (value: string) => void;
 }
 
-const wallets = [
-  {
-    id: "metamask",
-    name: "Metamask",
-    icon: "🦊",
-  },
-  {
-    id: "rainbow",
-    name: "Rainbow",
-    icon: "🌈",
-  },
-  {
-    id: "walletconnect",
-    name: "WalletConnect",
-    icon: "🔵",
-  },
-  {
-    id: "other",
-    name: "Other Crypto Wallets (Binance, Coinbase, Bybit etc)",
-    icon: "💼",
-  },
-]
-
 export function WalletSelector({ value, onChange }: WalletSelectorProps) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
-  const selectedWallet = wallets.find((w) => w.id === value)
+  const selectedWallet = wallets.find((w) => w.id === value);
+
+  const filteredWallets = wallets.filter(
+    (wallet) =>
+      wallet.name.toLowerCase().includes(search.toLowerCase()) ||
+      wallet.id.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" className="w-full h-12 justify-between border-border bg-transparent">
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className="w-full h-12 justify-between border-border rounded-full bg-transparent"
+        >
           {selectedWallet ? (
             <span className="flex items-center gap-2">
-              <span>{selectedWallet.icon}</span>
+              <Image
+                src={selectedWallet.icon || "/placeholder.svg"}
+                alt={selectedWallet.name}
+                width={24}
+                height={24}
+                className="object-contain"
+              />
               <span>{selectedWallet.name}</span>
             </span>
           ) : (
@@ -52,27 +51,33 @@ export function WalletSelector({ value, onChange }: WalletSelectorProps) {
           )}
           <ChevronDown className="h-4 w-4 opacity-50" />
         </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Select Wallet</DialogTitle>
-        </DialogHeader>
-        <div className="space-y-2">
-          {wallets.map((wallet) => (
+      </PopoverTrigger>
+      <PopoverContent className="w-[400px] p-0" align="start">
+        
+        <div className="max-h-[300px] overflow-y-auto">
+          {filteredWallets.map((wallet) => (
             <button
               key={wallet.id}
               onClick={() => {
-                onChange(wallet.id)
-                setOpen(false)
+                onChange(wallet.id);
+                setOpen(false);
+                setSearch("");
               }}
-              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-muted/50 transition-colors text-left rounded-lg border border-border"
+              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-muted/50 transition-colors text-left"
             >
-              <span className="text-2xl">{wallet.icon}</span>
+              {" "}
+              <Image
+                src={wallet.icon || "/placeholder.svg"}
+                alt={wallet.name}
+                width={24}
+                height={24}
+                className="object-contain"
+              />
               <span className="font-medium text-sm">{wallet.name}</span>
             </button>
           ))}
         </div>
-      </DialogContent>
-    </Dialog>
-  )
+      </PopoverContent>
+    </Popover>
+  );
 }
