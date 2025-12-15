@@ -71,7 +71,7 @@ export function CurrencySelector({
             />
           </div>
         </div>
-        <div className="max-h-[200px] overflow-y-scroll ">
+        <div className="max-h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-100">
           {filteredCurrencies.map((currency) => (
             <button
               key={currency.code}

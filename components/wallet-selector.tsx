@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { wallets } from "@/constants";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -53,8 +53,7 @@ export function WalletSelector({ value, onChange }: WalletSelectorProps) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[400px] p-0" align="start">
-        
-        <div className="max-h-[200px] overflow-y-scroll">
+        <div className="max-h-[200px] overflow-y-scroll scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-100">
           {filteredWallets.map((wallet) => (
             <button
               key={wallet.id}
