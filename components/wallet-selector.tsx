@@ -54,7 +54,7 @@ export function WalletSelector({ value, onChange }: WalletSelectorProps) {
       </PopoverTrigger>
       <PopoverContent className="w-[400px] p-0" align="start">
         
-        <div className="max-h-[300px] overflow-y-auto">
+        <div className="max-h-[200px] overflow-y-scroll">
           {filteredWallets.map((wallet) => (
             <button
               key={wallet.id}
