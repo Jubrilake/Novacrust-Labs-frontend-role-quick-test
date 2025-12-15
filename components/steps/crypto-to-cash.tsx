@@ -94,7 +94,7 @@ export function CryptoToCash({ onConvert }: CryptoToCashProps) {
               onChange={(e) =>
                 handleNumberInput(e.target.value, setYouPayAmount)
               }
-              className="border-0 w-28 bg-transparent shadow-none lg:text-2xl text-xl font-semibold p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-0 w-28 bg-transparent shadow-none md:text-2xl text-xl font-semibold p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
               placeholder="0.00"
             />
             <CurrencySelector
@@ -114,7 +114,7 @@ export function CryptoToCash({ onConvert }: CryptoToCashProps) {
               onChange={(e) =>
                 handleNumberInput(e.target.value, setYouReceiveAmount)
               }
-              className="border-0 w-28 bg-transparent lg:text-2xl text-xl shadow-none font-semibold p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-0 w-28 bg-transparent md:text-2xl text-xl shadow-none font-semibold p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0"
               placeholder="0.00"
             />
             <CurrencySelector

@@ -38,7 +38,7 @@ export function WalletSelector({ value, onChange }: WalletSelectorProps) {
           {selectedWallet ? (
             <span className="flex items-center gap-2">
               <Image
-                src={selectedWallet.icon || "/placeholder.svg"}
+                src={selectedWallet.icon}
                 alt={selectedWallet.name}
                 width={24}
                 height={24}

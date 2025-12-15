@@ -83,7 +83,7 @@ export function CurrencySelector({
               className="w-full px-4 py-3 flex items-center gap-3 hover:bg-muted/50 transition-colors text-left"
             >
               <Image
-                src={currency.icon || "/placeholder.svg"}
+                src={currency.icon}
                 alt={currency.name}
                 width={24}
                 height={24}

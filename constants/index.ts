@@ -8,7 +8,7 @@ export const cryptoCurrencies = [
 export const fiatCurrencies = [
   { code: "NGN", name: "Nigerian Naira", icon: "/naira.png" },
   { code: "USD", name: "US Dollar", icon: "/dollar.png" },
-  { code: "CED", name: "Euro", icon: "/cedis.png" },
+  { code: "CED", name: "Ghana Cedis", icon: "/cedis.png" },
   { code: "ZAR", name: "Euro", icon: "/rands.png" },
   { code: "GBP", name: "British Pound", icon: "/pound.png" },
 ];
